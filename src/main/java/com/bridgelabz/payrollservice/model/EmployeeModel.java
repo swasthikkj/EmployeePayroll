@@ -24,6 +24,8 @@ public class EmployeeModel {
 	private String department;
 	private LocalDateTime registeredDate;
     private LocalDateTime updatedDate;
+    private String emailId;
+    private String password;
 
 	public EmployeeModel(EmployeeDTO dto) {
 		this.firstName = dto.getFirstName();
@@ -32,6 +34,8 @@ public class EmployeeModel {
 		this.salary= dto.getSalary();
 		this.companyName = dto.getCompanyName();
 		this.department = dto.getDepartment();
+		this.emailId = dto.getEmailId();
+		this.password = dto.getPassword();
 	}
 
 	public EmployeeModel() {
