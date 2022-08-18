@@ -86,7 +86,8 @@ public class EmployeeService implements IEmployeeService {
 	}
 
 	@Override
-	public EmployeeModel deleteEmployee(Long id) { 
+	public EmployeeModel deleteEmployee(Long id, String token) { 
+		Long empId = tokenUtil.decodeToken(token);
 		Optional<EmployeeModel> isEmployeePresent = employeeRepository.findById(id);
 		if(isEmployeePresent.isPresent()){
 			employeeRepository.delete(isEmployeePresent.get());
@@ -105,7 +106,7 @@ public class EmployeeService implements IEmployeeService {
 		if(isEmailPresent.isPresent()){
 			if(isEmailPresent.get().getPassword().equals(password)){
 				String token = tokenUtil.createToken(isEmailPresent.get().getEmployeeId());
-				return new Response("login successfull",200,token);
+				return new Response("login successfull", 200, token);
 			}
 			throw new EmployeeNotFoundException(400,"Invalid credentials");
 		}

@@ -16,7 +16,7 @@ public interface IEmployeeService {
 	
 	List<EmployeeModel> getEmpData(String token);
 
-    EmployeeModel deleteEmployee(Long id);
+    EmployeeModel deleteEmployee(Long id, String token);
 
 	Response login(String email, String password);
 }

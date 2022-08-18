@@ -2,6 +2,8 @@ package com.bridgelabz.payrollservice.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,7 @@ public class Controller {
 	IEmployeeService employeeService;
 	
 	@PostMapping("/addemployee")
-	public EmployeeModel addEmployee(@RequestBody EmployeeDTO employeeDTO, @RequestParam Long departmentId) {
+	public EmployeeModel addEmployee(@Valid @RequestBody EmployeeDTO employeeDTO, @RequestParam Long departmentId) {
 		return employeeService.addEmployee(employeeDTO, departmentId);
 	}
 	
@@ -41,13 +43,13 @@ public class Controller {
     }
 
     @DeleteMapping("deleteemployee/{id}")
-    public EmployeeModel deleteemployee(@PathVariable Long id) {
-        return employeeService.deleteEmployee(id);
+    public EmployeeModel deleteemployee(@PathVariable Long id, String token) {
+        return employeeService.deleteEmployee(id, token);
     }
     
     @PostMapping("login")
     public Response login(@RequestParam String email,@RequestParam String password) {
-        return employeeService.login(email,password);
+        return employeeService.login(email, password);
     }
 }
 
