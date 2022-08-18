@@ -10,9 +10,9 @@ import com.bridgelabz.payrollservice.util.Response;
 @Service
 public interface IEmployeeService {
 
-	EmployeeModel addEmployee(EmployeeDTO employeeDTO);
+	EmployeeModel addEmployee(EmployeeDTO employeeDTO, Long departmentId);
 
-	EmployeeModel updateEmployeeById(EmployeeDTO employeeDTO, long id);
+	EmployeeModel updateEmployeeById(EmployeeDTO employeeDTO, String token, long departmentId);
 	
 	List<EmployeeModel> getEmpData(String token);
 

@@ -26,13 +26,13 @@ public class Controller {
 	IEmployeeService employeeService;
 	
 	@PostMapping("/addemployee")
-	public EmployeeModel addEmployee(@RequestBody EmployeeDTO employeeDTO) {
-		return employeeService.addEmployee(employeeDTO);
+	public EmployeeModel addEmployee(@RequestBody EmployeeDTO employeeDTO, @RequestParam Long departmentId) {
+		return employeeService.addEmployee(employeeDTO, departmentId);
 	}
 	
 	@PutMapping("/updateemployee/{id}")
-	public EmployeeModel updateEmployee(@RequestBody EmployeeDTO employeeDTO, @PathVariable long id) {
-		return employeeService.updateEmployeeById(employeeDTO,id);
+	public EmployeeModel updateEmployee(@RequestBody EmployeeDTO employeeDTO, @PathVariable long id, @RequestHeader String token, @RequestParam Long departmentId) {
+		return employeeService.updateEmployeeById(employeeDTO, token, departmentId);
 	}
 	
 	@GetMapping("getEmployeedata")
